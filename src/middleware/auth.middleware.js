@@ -12,11 +12,11 @@ const authMiddleWare = async (req, res, next) => {
         } else {
             let verify = jwt.verify(token, SECRET_KEY);
             if (!verify) {
-                return res.send("Invalid token");
+                 res.send("Invalid token");
             } else {
                 let user = await User.findOne({ _id: verify._id });
                 if (!user) {
-                    return res.send("user not found");
+                     res.send("user not found");
                 } else {
                     req._id = user._id;
                     next();
@@ -24,7 +24,7 @@ const authMiddleWare = async (req, res, next) => {
             }
         }
     } catch (error) {
-        return res.send(error);
+         res.send(error);
     }
 };
 
