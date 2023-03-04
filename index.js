@@ -12,14 +12,15 @@ app.use(express.json());
 
 app.use("/user", AuthRouter)
 
+app.get("", async (req, res) => {
+    res.send("Hello World")
+})
+
 app.use(authMiddleWare);
 
 app.use("/task", TasksRouter)
 
 
-app.get("", async (req, res) => {
-    res.send("Hello World")
-})
 app.listen(PORT, async (req, res) => {
     try {
         await connect();
